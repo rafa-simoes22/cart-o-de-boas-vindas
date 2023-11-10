@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Tailwind</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <audio id="audioPlayer"></audio>
+</head>
+<body class="bg-gray-200">
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold mb-4 text-center">Numa atmosfera repleta de amor e ansiedade, um pequeno milagre emerge para iluminar nossas vidas: </h1>
+        <h1 class="text-3xl font-bold mb-4 text-center">Murillo</h1>
+
+        <div class="container mx-auto p-8 flex space-x-8">
+
+            <div class="flex-1 mx-auto p-8 bg-gray-100 h-full">
+                <p>Sua chegada traz consigo uma torrente de boas vibrações, envolvendo todos ao seu redor numa aura de felicidade e esperança. Cada sorriso, cada pequeno gesto, é como uma sinfonia de alegria que preenche os corações dos que testemunham o início de uma nova jornada.</p>
+                <p>Neste momento mágico, celebramos a fragilidade da vida que se inicia, envolvendo o bebê em pensamentos positivos e energias benevolentes. É como se o universo conspirasse para criar um ambiente acolhedor, repleto de boas intenções e expectativas auspiciosas para o futuro que se desenha diante de nós.</p>
+                <p>Que as boas vibrações que cercam o recém-nascido se transformem em alicerces sólidos para um caminho cheio de descobertas e conquistas. Que cada risada seja um eco de felicidade, cada abraço uma demonstração de amor incondicional. Que a luz que brilha nos olhos do bebê seja reflexo do potencial infinito que reside dentro dele.</p>
+                <p>Assim, damos as boas-vindas a esse pequeno ser, carregando consigo a promessa de um amanhã cheio de possibilidades e realizações. Que a jornada do recém-nascido seja pavimentada com as melhores vibrações, guiando-o suavemente pelos primeiros passos de uma vida plena e repleta de significado.</p>
+            </div>
+
+            <div class="flex-1 mx-auto p-8 bg-gray-100 h-full">
+                <div class="bg-white p-4 rounded shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Escolha uma Música</h2>
+                    <select id="songSelect" class="mb-4">
+                        <option value="src\audio\1.mp3">Música 1</option>
+                        <option value="src/audio/2.mp3">Música 2</option>
+                        <option value="src\audio\3.mp3">Música 3</option>
+                        <option value="src\audio\4.mp3">Música 4</option>
+                    </select>
+
+                    <div class="flex items-center justify-center mb-4">
+                        <button onclick="playPause()" class="bg-blue-500 text-white px-4 py-2 rounded-full mr-4 hover:bg-blue-700">
+                            <svg id="playPauseIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button onclick="skipBackward()" class="bg-blue-500 text-white px-4 py-2 rounded-full mr-4 hover:bg-blue-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <button onclick="skipForward()" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-center">
+                        <div class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseIcon = document.getElementById('playPauseIcon');
+        const songSelect = document.getElementById('songSelect');
+
+        function playPause() {
+            if (audioPlayer.paused) {
+                audioPlayer.src = songSelect.value;
+                audioPlayer.play();
+                playPauseIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>';
+            } else {
+                audioPlayer.pause();
+                playPauseIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            }
+        }
+
+        function skipBackward() {
+            audioPlayer.currentTime -= 10; // Retrocede 10 segundos
+        }
+
+        function skipForward() {
+            audioPlayer.currentTime += 10; // Avança 10 segundos
+        }
+    </script>
+</body>
+</html>
